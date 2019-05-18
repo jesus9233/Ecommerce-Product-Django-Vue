@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '-fncwk1nuwlk%y5^=z_g1vb$qo@v&t@q#e$flp8%ttw1d=9f!b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['my-shoestore.herokuapp.com', 'localhost']
 
