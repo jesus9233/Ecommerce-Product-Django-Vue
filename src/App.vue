@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <button @click="SelectWinner()">Select a Winner</button>
+    <button>Select a Winner</button>
     <p>
-      {{winner}}
+      {{names}}
     </p>
   </div>
 </template>
@@ -22,14 +22,14 @@ export default {
   methods: {
       FetchData: function() {
           var app = this;
-          axios.get(process.env.API_URL + "/product/").then(response => {
-              app.names = response.data.names;
+          axios.get(process.env.API_URL + "/api/product/").then(response => {
+              app.names = response.data;
           });
       },
-      SelectWinner: function() {
-        var winner = this.names[Math.floor(Math.random()*this.names.length)];
-        this.winner = winner;
-      },
+      // SelectWinner: function() {
+      //   var winner = this.names[Math.floor(Math.random()*this.names.length)];
+      //   this.winner = winner;
+      // },
   }
 }
 </script>

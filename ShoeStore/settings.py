@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['my-shoestore.herokuapp.com', 'localhost']
 
+AUTH_USER_MODEL = 'user.User'
 
 # Application definition
 
@@ -39,9 +40,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # our apps
+    'user.apps.UserConfig',
     'product.apps.ProductConfig',
-    # third party apps
+    'childproduct.apps.ChildproductConfig',
+    'variants.apps.VariantsConfig',
+    'cart.apps.CartConfig',
+
+    # third party
+    'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
+    'storages',
+    'django_cleanup.apps.CleanupConfig',
 
 ]
 
