@@ -38,7 +38,7 @@
             <p v-if="product">Category : {{product.product.category}}</p>
             <p v-if="product">Brand : {{product.product.brand}}</p>
             <p v-if="product">Material : {{product.product.material_type}}</p>
-            <div v-if="product">
+            <div v-if="product && $store.state.cartItems">
               <button :class="inCart(variantId) ? 'btn-danger' :'btn-success'"
               @click="cartToggle(variantId)"  type="button" class="btn"
               :disabled="(variantId === '' || qty === 0) && !inCart(variantId) && cart">
@@ -51,7 +51,7 @@
 
         <div>
           <b-tabs content-class="mt-3">
-            <b-tab title="Description" active><p>{{product.product.description}}</p></b-tab>
+            <b-tab title="Description" active v-if="product"><p>{{product.product.description}}</p></b-tab>
             <b-tab title="Reviews"><p>This is Review</p></b-tab>
           </b-tabs>
         </div>

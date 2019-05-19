@@ -6,7 +6,7 @@
 				<div class="row">
 					<div class="col-lg-7 cart-items align-self-top mb-5">
 						<div class="border p-3">
-							<h4 class="p-1">My Cart [ {{products.length}} ]</h4>
+							<h4 class="p-1" v-if="products">My Cart [ {{products.length}} ]</h4>
 							<hr>
 							<div class="row my-3 border-bottom p-1"  v-for="product in products">
 								<div class="col-sm-5">
