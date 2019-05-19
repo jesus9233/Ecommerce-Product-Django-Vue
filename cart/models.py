@@ -11,18 +11,20 @@ class CartManager(models.Manager):
         is_auth_user = request.user.is_authenticated
         cart_id = request.session.get('cart_id', None)
         qs = self.get_queryset().filter(id=cart_id)
+        user_qs = self.get_queryset().filter(user=request.user)
         if qs.exists():
             cart = qs.first()
             if is_auth_user and not cart.user:
                 cart.user = request.user
                 cart.save()
+        elif is_auth_user and user_qs.exists():
+            cart = user_qs.first()
         else:
             user_obj = None
             if request.user and is_auth_user:
                 user_obj = request.user
             cart = self.get_queryset().create(user=user_obj)
             request.session['cart_id'] = cart.id
-
         return cart
 
 
@@ -33,7 +35,6 @@ class Cart(models.Model):
     total = models.DecimalField(decimal_places=2, max_digits=10, default=0.00)
     updated = models.DateTimeField(auto_now=True)
     objects = CartManager()
-
 
     class Meta:
         verbose_name = 'Cart'

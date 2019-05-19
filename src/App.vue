@@ -19,10 +19,6 @@
 import Navbar from './components/header/navbar.vue'
 import Footer from './components/footer.vue'
 import axios from 'axios'
-// <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-// integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-// <link href="https://fonts.googleapis.com/css?family=Pacifico|Poppins:500,600,700|Roboto:400,500,700" rel="stylesheet">
-// <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
 
 export default {
   name: 'App',
@@ -43,7 +39,7 @@ export default {
 </script>
 
 <style>
-/* @import url('https://fonts.googleapis.com/css?family=Pacifico|Poppins:500,600,700|Roboto:400,500,700'); */
+@import url('https://fonts.googleapis.com/css?family=Pacifico|Poppins:500,600,700|Roboto:400,500,700&display=swap');
 
 html{
   scroll-behavior: smooth;

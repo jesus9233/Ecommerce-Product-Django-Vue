@@ -3,40 +3,38 @@
 		<app-header>my cart</app-header>
 		<div class="container-fluid pt-5 cart">
 			<div class="container pt-5" >
-				<div class="row cart-items">
-					<table class="text-center table">
-						<thead class="bg-lightgrey">
-							<tr>
-								<th>Image</th>
-
-								<th>Product</th>
-
-								<th>Price</th>
-
-								<th>Size</th>
-
-								<th>Remove</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr v-for="product in products" >
-								<td><img :src="product.thumb" alt="product thumb"></td>
-								<td>{{product.name}}</td>
-								<td>{{product.price}}</td>
-								<td>{{product.size}}</td>
-								<td>
-									<a class="btn btn-danger text-white" @click.prevent="cartToggle(product.id)">
-										<font-awesome-icon icon="trash-alt" />
-									</a>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-				<div class="row py-5 justify-content-end total-cart">
-					<div class="col-lg-6">
+				<div class="row">
+					<div class="col-lg-7 cart-items align-self-top mb-5">
+						<div class="border p-3">
+							<h4 class="p-1">My Cart [ {{products.length}} ]</h4>
+							<hr>
+							<div class="row my-3 border-bottom p-1"  v-for="product in products">
+								<div class="col-sm-5">
+									<router-link :to="'/product/'+product.slug">
+										<img :src="product.thumb" alt="product thumb">
+									</router-link>
+								</div>
+								<div class="col-sm-7">
+									<h5>
+										<router-link :to="'/product/'+product.slug">
+											{{product.name}}
+										</router-link>
+									</h5>
+									<span>Rs. {{product.price}}</span>
+									<p>Size {{product.size}}</p>
+									<div class="text-right">
+										<a class="btn btn-danger btn-sm text-white" @click.prevent="cartToggle(product.id)">
+											<font-awesome-icon icon="trash-alt" class="mr-1" />Remove
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5 total-cart">
 						<div class="border p-3" v-if="cart">
-							<h3 class="poppins p-1">Cart Totals</h3>
+							<h4 class="p-1">Cart Totals</h4>
+							<hr>
 							<p class="d-flex p-2">
 								<span>Items Count</span>
 								<span>{{cart.products.length}}</span>
@@ -51,7 +49,7 @@
 							</p>
 						</div>
 						<div class="text-right">
-							<router-link class="btn btn-lg btn-outline-success m-2" type="button" :to="{name:'Checkout'}" exact>
+							<router-link class="btn btn-success m-2" tag="button" :to="{name:'Checkout'}" exact>
 								Checkout
 							</router-link>
 						</div>
@@ -88,33 +86,26 @@
 	}
 </script>
 <style scoped>
+
+a{
+	color:#333;
+}
+
 	.head{
 		font-size: 1.2rem;
 		padding: 1rem;
 	}
 	.cart img{
-		max-height: 150px;
+		max-width:100%;
 	}
 	.cart input.form-control{
 		max-width: 100px;
 		min-width: 70px;
 	}
-	.cart div{
+	/* .cart div{
 		align-items: center;
-	}
-	table{
-		width: 100%;
-		white-space: nowrap;
-	}
-	table.table td, .table th{
-		vertical-align: middle;
-	}
-	table.table tbody tr:first-of-type td{
-		border-top: 0;
-	}
-	.poppins{
-		font-family: poppins;
-	}
+	} */
+
 	.total-cart span{
 		display: block;
 		width: 50%;
@@ -124,5 +115,8 @@
 	}
 	.cart-items{
 		overflow-x: auto;
+	}
+	.border-bottom:last-of-type{
+		border-bottom:none !important;
 	}
 </style>

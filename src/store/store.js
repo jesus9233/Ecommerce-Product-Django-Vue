@@ -59,7 +59,10 @@ export const store = new Vuex.Store({
           state.loading=false;
 				})
 				.catch((err) => {
+          if(err.response){
 					console.log(err.response, ' --> in getCartItems');
+        }
+        console.log(err);
 				})
 			},
       login(state, data) {
@@ -76,7 +79,9 @@ export const store = new Vuex.Store({
               state.login.errors = err.response.data;
               state.login.showDismissibleAlert = true;
             }
-            console.log(err.response);
+            if(err.response){
+              console.log(err.response);
+            }
             console.log(err);
             state.loading = false;
           })
@@ -127,9 +132,10 @@ export const store = new Vuex.Store({
     actions:{
       cartToggle(store, productId){
           store.state.loading = true;
-          axios.get(process.env.API_URL+'/api/cart/edit/'+productId+'/')
+          let headers = store.getters.headerToken;
+          axios.get(process.env.API_URL+'/api/cart/edit/'+productId+'/', {headers})
           .then((response) => {
-            store.commit('getCartItems');
+            store.commit('getCartItems',headers);
             store.state.loading = false;
           })
           .catch((err) => {

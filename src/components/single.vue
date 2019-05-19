@@ -41,25 +41,19 @@
             <div v-if="product">
               <button :class="inCart(variantId) ? 'btn-danger' :'btn-success'"
               @click="cartToggle(variantId)"  type="button" class="btn"
-              :disabled="(variantId === '' || qty === 0) && !inCart(variantId)">
+              :disabled="(variantId === '' || qty === 0) && !inCart(variantId) && cart">
                 <span v-if="product && inCart(variantId)">Remove from Cart</span>
                 <span v-else>Add to Cart</span>
               </button>
             </div>
           </div>
         </div>
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link active" data-toggle="pill" for="home" href="#home" @click="tabToggle">Description</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="pill" href="#desc" @click="tabToggle" for="desc">Reviews</a>
-          </li>
-        </ul>
-        <!-- Tab panes -->
-        <div class="tab-content">
-          <div class="tab-pane container active" id="home" v-if="product">{{product.product.description}}</div>
-          <div class="tab-pane container" id="desc">desc</div>
+
+        <div>
+          <b-tabs content-class="mt-3">
+            <b-tab title="Description" active><p>{{product.product.description}}</p></b-tab>
+            <b-tab title="Reviews"><p>This is Review</p></b-tab>
+          </b-tabs>
         </div>
       </div>
     </div>
@@ -79,7 +73,8 @@ export default{
       qty:'',
       qtyText:'',
       qtyClass:'',
-      variantId:''
+      variantId:'',
+      cart:''
     }
   },
   components:{
@@ -122,7 +117,8 @@ export default{
       })
     },
     cartToggle(productId){
-        this.$store.dispatch('cartToggle', productId);
+        this.cart = false;
+        this.$store.dispatch('cartToggle', productId).then(this.cart = true)
     },
     inCart(productId){
       return this.$store.state.cartItems.cart.products.includes(productId);
@@ -150,7 +146,6 @@ export default{
         if(this.variants[i].size == size){
           this.qty = this.variants[i].quantity;
           this.variantId = this.variants[i].id;
-          console.log(this.variantId);
           if(this.qty > 10){
             this.qtyClass = 'text-success';
             this.qtyText = 'In stock';
@@ -166,20 +161,6 @@ export default{
         }
       }
     },
-    tabToggle(){
-        let el = event.srcElement;
-        let id = el.getAttribute("for");
-        let data = document.getElementById(id);
-        let activePill = document.querySelector('.nav-pills .nav-link.active');
-        let activeData = document.querySelector('.tab-pane.active');
-
-        if(activeData && activePill) {
-          activeData.classList.remove('active');
-          activePill.classList.remove('active');
-        }
-        data.classList.add('active');
-        el.classList.add('active');
-      }
   },
   mounted(){
     this.fetchProduct();

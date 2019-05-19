@@ -23,7 +23,7 @@
 							<div class="form-group mb-4">
 							<textarea class="form-control" placeholder="Message"></textarea>
 							</div>
-							<button @click.prevent class="btn  btn-outline-primary">Send Message</button>
+							<button @click.prevent class="btn btn-primary">Send Message</button>
 						</form>
 					</div>
 				</div>
@@ -32,15 +32,15 @@
 
 		<div class="container contact p-5">
 			<div class="row">
-				<div class="col-4 text-center">
+				<div class="col-md-4 text-center mb-1">
 					<font-awesome-icon class="icon" icon="map-marked-alt" />
 					<p class="p-2">Dummy Address Here</p>
 				</div>
-				<div class="col-4 text-center">
+				<div class="col-md-4 text-center mb-1">
 					<font-awesome-icon class="icon" icon="mobile" />
 					<p class="p-2">987654321</p>
 				</div>
-				<div class="col-4 text-center">
+				<div class="col-md-4 text-center">
 					<font-awesome-icon class="icon" icon="envelope-open-text" />
 					<p class="p-2">Dummy@mail.com</p>
 				</div>
@@ -60,7 +60,7 @@
 
 <style scoped>
 	.contact .icon{
-		font-size: 10vw;
+		font-size: 8rem;
 	}
 
 </style>

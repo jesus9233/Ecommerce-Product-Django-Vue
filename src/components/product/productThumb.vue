@@ -5,11 +5,8 @@
 				<img :src="product.thumb" class="product-image" alt="product image">
 			</div>
 			<div class="ml-1 p-2">
-				<p class="mt-2 mb-0">{{product.title}}</p>
-				<div class="d-flex p-1">
-					<p class="w-50 text-left mb-0">Rs. {{product.price}}</p>
-					<p class="w-50 text-right mb-0"><i class="far fa-star" v-for="x in 5"></i></p>
-				</div>
+				<p class="mt-2 mb-0 text-capitalize">{{product.title}}</p>
+				<p class="mb-0 p-1 text-success">Rs. {{product.price}}</p>
 			</div>
 		</div>
 	</router-link>

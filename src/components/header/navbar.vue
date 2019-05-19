@@ -5,25 +5,27 @@
     <b-navbar toggleable="lg" type="light" id="navbar" :class="{'scrolled':scrolled,'awake':awake,'sleep':sleep}">
       <div class="container">
         <b-navbar-brand :to="{name:'Home'}"><font-awesome-icon icon="shoe-prints" class="mr-2"/>Shoe Store</b-navbar-brand>
+        <div class="menu-buttons">
+          <b-navbar-toggle target="nav-collapse" class="ml-auto btn btn-outline-dark">
+            <font-awesome-icon icon="bars" class="icon"/>
+          </b-navbar-toggle>
 
-        <b-navbar-toggle target="nav-collapse" class="ml-auto btn btn-outline-dark">
-          <font-awesome-icon icon="bars"/>
-        </b-navbar-toggle>
+          <b-button variant="outline-dark ml-1" class="navbar-toggler" @click="searchToggle">
+            <font-awesome-icon icon="search" class="icon"/>
+          </b-button>
 
-        <b-button variant="outline-dark ml-2" class="navbar-toggler" @click="searchToggle">
-          <font-awesome-icon icon="search"/>
-        </b-button>
-
-        <router-link class="btn btn-outline-dark navbar-toggler ml-2"
-                     type="button"
-                     :to="{name:'Cart'}"
-                     active-class="active"
-                     exact>
-          <font-awesome-icon icon="shopping-cart" class="mr-1"/>
-          <b-badge :class="cartClass()" v-if="$store.state.cartItems">
-            {{cartCount}}
-          </b-badge>
-        </router-link>
+          <router-link class="btn btn-outline-dark navbar-toggler ml-1"
+                       type="button"
+                       tag="button"
+                       :to="{name:'Cart'}"
+                       active-class="active"
+                       exact>
+            <font-awesome-icon icon="shopping-cart" class="mr-1 icon"/>
+            <b-badge :class="cartClass()" v-if="$store.state.cartItems">
+              {{cartCount}}
+            </b-badge>
+          </router-link>
+        </div>
 
         <b-collapse id="nav-collapse" is-nav>
           <!-- Right aligned nav items -->
@@ -207,7 +209,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   }
 
-  .btn:hover i {
+  .btn:hover .icon {
     color: white;
   }
   nav.scrolled {
@@ -223,11 +225,13 @@
     transition: 0.3s;
   }
   nav.scrolled.awake .navbar-brand {
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-right:0;
   }
   nav.navbar .navbar-brand {
     font-family: 'Pacifico', cursive;
-    font-size: 2.5rem;
+    font-size: 1.8rem;
+    margin-right:0;
     transition: 0.3s;
   }
 
@@ -241,5 +245,10 @@
   .navbar-toggler {
     border: 2px solid;
   }
-
+  .menu-buttons{
+    display:flex;
+  }
+  .navbar-toggler{
+    padding:0.3rem 0.5rem;
+  }
 </style>

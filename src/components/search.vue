@@ -1,5 +1,5 @@
 <template>
-	<div class="pt-8">
+	<div class="pt-6">
 		<div class="container">
 			<form>
 				<div class="form-group mb-3">
@@ -52,7 +52,7 @@ export default{
 </script>
 
 <style scoped>
-	.pt-8{
-		padding-top:8.3rem;
+	.pt-6{
+		padding-top:6rem;
 	}
 </style>

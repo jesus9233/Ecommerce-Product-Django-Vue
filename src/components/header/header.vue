@@ -1,5 +1,5 @@
 <template>
-	<div class="pt-6">
+	<div class="pt-5">
 		<div class="header-image">
 			<div v-vpshow>
 				<p class="page-name"><slot></slot></p >

@@ -11,10 +11,6 @@ from .serializers import CartSerializer
 @api_view()
 @permission_classes([AllowAny])
 def cart_home(request):
-    if request.user.is_authenticated:
-        print('noiceeeeeeeeeeeeeeeeeeeeeeee')
-    else:
-        print('not noiceeeeeeeeeeeeeeeee')
     cart = Cart.objects.get_or_new(request)
     serialized_cart = CartSerializer(cart)
     cart_products = [x.id for x in cart.products.all()]
@@ -29,7 +25,6 @@ def cart_edit(request, product_id):
         product = Variant.objects.get(id=product_id)
     except Variant.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
     cart = Cart.objects.get_or_new(request)
     if product in cart.products.all():
         cart.products.remove(product)
