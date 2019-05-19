@@ -117,8 +117,8 @@ export default{
       })
     },
     cartToggle(productId){
-        this.cart = false;
-        this.$store.dispatch('cartToggle', productId).then(this.cart = true)
+        this.cart = true;
+        this.$store.dispatch('cartToggle', productId).then(this.cart = false)
     },
     inCart(productId){
       return this.$store.state.cartItems.cart.products.includes(productId);

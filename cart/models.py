@@ -11,7 +11,8 @@ class CartManager(models.Manager):
         is_auth_user = request.user.is_authenticated
         cart_id = request.session.get('cart_id', None)
         qs = self.get_queryset().filter(id=cart_id)
-        user_qs = self.get_queryset().filter(user=request.user)
+        if is_auth_user:
+            user_qs = self.get_queryset().filter(user=request.user)
         if qs.exists():
             cart = qs.first()
             if is_auth_user and not cart.user:

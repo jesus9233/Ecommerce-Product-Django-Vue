@@ -79,10 +79,6 @@ export const store = new Vuex.Store({
               state.login.errors = err.response.data;
               state.login.showDismissibleAlert = true;
             }
-            if(err.response){
-              console.log(err.response);
-            }
-            console.log(err);
             state.loading = false;
           })
       },
