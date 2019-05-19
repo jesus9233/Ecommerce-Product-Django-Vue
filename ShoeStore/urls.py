@@ -24,6 +24,5 @@ urlpatterns = [
   path('api/variants/', include('variants.urls')),
   path('api/cart/', include('cart.urls')),
   path('api/user/', include('user.urls')),
-  path('product/', include('product.urls')),
   url(r'^$', TemplateView.as_view(template_name='index.html')),
 ]

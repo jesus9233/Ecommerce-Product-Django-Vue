@@ -20,10 +20,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-fncwk1nuwlk%y5^=z_g1vb$qo@v&t@q#e$flp8%ttw1d=9f!b'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = (os.environ.get('DEBUG_VALUE') == "True")
 
 ALLOWED_HOSTS = ['my-shoestore.herokuapp.com', 'localhost']
 
@@ -54,6 +54,14 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
 
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated', )
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -140,11 +148,21 @@ STATICFILES_DIRS = [
   os.path.join(BASE_DIR, 'dist/static'),
 ]
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+AWS_S3_SIGNATURE_VERSION = "s3v4"
+AWS_S3_REGION_NAME = "ap-south-1"
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
 CORS_ORIGIN_ALLOW_ALL = False
 
 try:
     from local_settings import *
-    print('ok')
 except ImportError:
     pass
 
