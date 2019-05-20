@@ -7,22 +7,6 @@ const vueLoaderConfig = require('./vue-loader.conf')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-const GoogleFontsPlugin = require("google-fonts-webpack-plugin")
-
-module.exports = {
-    "entry": "index.js",
-    plugins: [
-        new GoogleFontsPlugin({
-          fonts: [
-              { family: "Poppins", variants: ["600", "700"] },
-              { family: "Roboto", variants: [ "400", "500", "700" ] },
-              { family: "Pacifio" }
-          ],
-          path: "../src/assets/fonts/",
-          filename: "../src/assets/fonts/fonts.css"
-        })
-    ]
-}
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
