@@ -84,13 +84,15 @@
     </b-navbar>
     <transition enter-active-class="animated slideInDown faster" leave-active-class="animated slideOutUp faster">
       <div class="searchBar" v-if="searchOpen" :class="position" :style="'top:'+navPos+'px;'">
-        <b-input-group class="mb-3 w-75 m-auto">
-          <b-form-input v-model="query"></b-form-input>
-          <b-input-group-append>
-            <b-button variant="primary" @click.prevent="search">
-              <font-awesome-icon icon="search"/></b-button>
-          </b-input-group-append>
-        </b-input-group>
+        <form @submit.prevent="search">
+          <b-input-group class="mb-3 w-75 m-auto">
+            <b-form-input v-model="query"></b-form-input>
+            <b-input-group-append>
+              <b-button variant="primary" type="submit">
+                <font-awesome-icon icon="search"/></b-button>
+              </b-input-group-append>
+            </b-input-group>
+        </form>
       </div>
     </transition>
   </div>
@@ -243,12 +245,10 @@
   }
 
   .navbar-toggler {
-    border: 2px solid;
+    border: 1px solid;
+    padding:0.3rem 0.5rem;
   }
   .menu-buttons{
     display:flex;
-  }
-  .navbar-toggler{
-    padding:0.3rem 0.5rem;
   }
 </style>

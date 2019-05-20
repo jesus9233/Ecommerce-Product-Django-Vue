@@ -1,0 +1,40 @@
+
+@font-face{
+  font-family:'Pacifico';
+  src:url("./Pacifico/Pacifico-Regular.ttf");
+}
+@font-face{
+  font-family:'Poppins';
+  src:url("./Poppins/Poppins-Medium.ttf");
+  font-weight:500;
+}
+
+@font-face{
+  font-family:'Poppins';
+  src:url("./Poppins/Poppins-SemiBold.ttf");
+  font-weight:600;
+}
+
+@font-face{
+  font-family:'Poppins';
+  src:url("./Poppins/Poppins-Bold.ttf");
+  font-weight:700;
+}
+
+@font-face{
+  font-family:'Roboto';
+  src:url("./Roboto/Roboto-Regular.ttf");
+  font-weight:400;
+}
+
+@font-face{
+  font-family:'Roboto';
+  src:url("./Roboto/Roboto-Medium.ttf");
+  font-weight:500;
+}
+
+@font-face{
+  font-family:'Roboto';
+  src:url("./Roboto/Roboto-Bold.ttf");
+  font-weight:700;
+}
