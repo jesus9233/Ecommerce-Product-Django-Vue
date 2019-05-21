@@ -51,7 +51,6 @@ export default {
 </script>
 
 <style>
-/* @import url('https://fonts.googleapis.com/css?family=Pacifico|Poppins:500,600,700|Roboto:400,500,700'); */
 @import url('./assets/fonts/fonts.css');
 
 html{
@@ -115,11 +114,11 @@ body a:hover{text-decoration: none;}
 	right: 0;
 	margin: auto;
 	outline: 1px solid red;
-	filter: url(#goo);
-		-o-filter: url(#goo);
-		-ms-filter: url(#goo);
-		-webkit-filter: url(#goo);
-		-moz-filter: url(#goo);
+	filter: url(#goo) contrast(200%);
+		-o-filter: url(#goo) contrast(200%);
+		-ms-filter: url(#goo) contrast(200%);
+		-webkit-filter: url(#goo) contrast(200%);
+		-moz-filter: url(#goo) contrast(200%);
 }
 
 .cssload-dot {

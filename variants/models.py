@@ -38,12 +38,14 @@ size_chocies = (
     ('11', '11 IN'),
 )
 
+
 class Variant(models.Model):
-    child_product = models.ForeignKey(ChildProduct, on_delete=models.CASCADE, related_name='variants')
+    child_product = models.ForeignKey(ChildProduct, on_delete=models.CASCADE,
+                                      related_name='variants')
     size = models.CharField(max_length=2, choices=size_chocies)
     quantity = models.PositiveIntegerField()
-    timestamp = models.DateTimeField(auto_now_add = True)
-    updated = models.DateTimeField(auto_now = True)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     objects = VariantManager()
 
@@ -56,10 +58,11 @@ class Variant(models.Model):
         return f'{self.id}'
 
     def validate_unique(self, exclude=None):
-        if Variant.objects.exclude(pk=self.pk).filter(child_product__id = self.child_product.id,
-                                                      child_product__color = self.child_product.color,
+        if Variant.objects.exclude(pk=self.pk).filter(child_product__id=self.child_product.id,
+                                                      child_product__color=self.child_product.color,
                                                       size=self.size).exists():
-            raise ValidationError("This size is already added for this product's color")
+            raise ValidationError("This size is already added for this produc\
+            t's color")
         super(Variant, self).validate_unique(exclude=exclude)
 
     def parent(self):

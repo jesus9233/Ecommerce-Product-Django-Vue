@@ -8,6 +8,7 @@ User = settings.AUTH_USER_MODEL
 
 class CartManager(models.Manager):
     def get_or_new(self, request):
+        created = False
         is_auth_user = request.user.is_authenticated
         cart_id = request.session.get('cart_id', None)
         qs = self.get_queryset().filter(id=cart_id)
@@ -25,8 +26,9 @@ class CartManager(models.Manager):
             if request.user and is_auth_user:
                 user_obj = request.user
             cart = self.get_queryset().create(user=user_obj)
+            created = True
             request.session['cart_id'] = cart.id
-        return cart
+        return cart, created
 
 
 class Cart(models.Model):

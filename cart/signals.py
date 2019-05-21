@@ -14,6 +14,7 @@ def set_subtotal(sender, instance, action, *args, **kwargs):
         instance.subtotal = total
         instance.save()
 
+
 @receiver(pre_save, sender=Cart)
 def set_total(sender, instance, *args, **kwargs):
     if instance.subtotal > 0:

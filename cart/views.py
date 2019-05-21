@@ -11,7 +11,7 @@ from .serializers import CartSerializer
 @api_view()
 @permission_classes([AllowAny])
 def cart_home(request):
-    cart = Cart.objects.get_or_new(request)
+    cart, created = Cart.objects.get_or_new(request)
     serialized_cart = CartSerializer(cart)
     cart_products = [x.id for x in cart.products.all()]
     details = Variant.objects.get_details(cart_products)
@@ -33,3 +33,12 @@ def cart_edit(request, product_id):
         cart.products.add(product)
         action = 'added'
     return Response({'action': action}, status=status.HTTP_200_OK)
+
+#
+# @api_view()
+# @permission_classes([AllowAny])
+# def checkout_home(request):
+#     cart, created = Cart.objects.get_or_new(request)
+#     order = None
+#     if created or cart.products.count == 0:
+#         return Response(status=status.HTTP_301_MOVED_PERMANENTLY)
