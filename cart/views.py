@@ -25,7 +25,7 @@ def cart_edit(request, product_id):
         product = Variant.objects.get(id=product_id)
     except Variant.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-    cart = Cart.objects.get_or_new(request)
+    cart, created = Cart.objects.get_or_new(request)
     if product in cart.products.all():
         cart.products.remove(product)
         action = 'removed'

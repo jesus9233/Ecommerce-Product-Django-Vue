@@ -8,7 +8,10 @@
 						<div class="border p-3">
 							<h4 class="p-1" v-if="products">My Cart [ {{products.length}} ]</h4>
 							<hr>
-							<div class="row my-3 border-bottom p-1"  v-for="product in products">
+							<div v-if="products.length < 1">
+								Buy Something <router-link :to="{name:'Shop'}" class="text-primary">Here</router-link>
+							</div>
+							<div class="row my-3 border-bottom p-1" v-for="product in products" v-else>
 								<div class="col-sm-5">
 									<router-link :to="'/product/'+product.slug">
 										<img :src="product.thumb" alt="product thumb">
@@ -31,7 +34,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-lg-5 total-cart">
+					<div class="col-lg-5 total-cart" v-if="products.length > 0">
 						<div class="border p-3" v-if="cart">
 							<h4 class="p-1">Cart Totals</h4>
 							<hr>
