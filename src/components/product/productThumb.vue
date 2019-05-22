@@ -1,7 +1,7 @@
 <template>
 	<router-link :to="'/product/'+product.slug" active-class="active" class="trend bg-lightgrey" >
 		<div class="bg-lightgrey" >
-			<div class="o-h d-flex align-items-center">
+			<div class="o-h d-flex align-items-center h-100">
 				<img :src="product.thumb" class="product-image" alt="product image">
 			</div>
 			<div class="ml-1 p-2">

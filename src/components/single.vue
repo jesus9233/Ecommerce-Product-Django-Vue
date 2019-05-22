@@ -54,7 +54,6 @@
           <div>
             <b-tabs content-class="mt-3">
               <b-tab title="Description" active><p>{{product.product.description}}</p></b-tab>
-              <b-tab title="Reviews"><p>This is Review</p></b-tab>
             </b-tabs>
           </div>
         </template>
