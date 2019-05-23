@@ -7,21 +7,29 @@
 				<font-awesome-icon icon="chevron-down" class="icon"/></a>
 		</div>
 	</div>
-	<div class="container-fluid mt-5">
-		<div class="section-heading" text="trending" id="trending" v-vpshow>
+	<div class="container-fluid pt-5 ">
+		<div class="section-heading " text="trending" id="trending" v-vpshow>
 			Trending
 		</div>
-		<div class="row">
-			<div class="col-lg-3 col-6 text-center" v-for="product in latest">
-				<app-product-thumb :product="product"></app-product-thumb>
+			<div class="row justify-content-center ">
+				<div class="col-md-10 col-sm-12 col-8">
+					<div class="row">
+						<div class="col-lg-4 col-sm-6 col-12 mb-4" v-for="product in latest">
+							<app-product-thumb :product="product"></app-product-thumb>
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
 	  	<div class="section-heading" text="latest products" v-vpshow>
 		latest products
 		</div>
-		<div class="row">
-			<div class="col-lg-3 col-6 text-center pb-4" v-for="product in latest">
-				<app-product-thumb :product="product"></app-product-thumb>
+		<div class="row justify-content-center ">
+			<div class="col-md-10 col-sm-12 col-8">
+				<div class="row">
+					<div class="col-lg-4 col-sm-6 col-12 mb-4" v-for="product in latest">
+						<app-product-thumb :product="product"></app-product-thumb>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
@@ -61,6 +69,7 @@ export default{
 	data(){
 		return {
 			latest:'',
+			uniqueId:1
 		}
 	},
 	components:{

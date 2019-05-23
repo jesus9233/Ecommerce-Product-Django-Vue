@@ -5,7 +5,7 @@
 			<div class="container pt-5">
 				<div class="row justify-content-center">
 					<div class="col-lg-8 billing">
-							<form method="post" class="bg-lightgrey p-5 mb-5">
+							<form method="post" class=" p-5 mb-5">
 								<h3 class="poppins">Billing Details</h3>
 								<div class="row">
 									<div class="col-md-6">
@@ -64,7 +64,7 @@
 
 							<div class="row">
 								<div class="col-md-6  pb-5">
-									<div class="border p-3 total-cart bg-lightgrey">
+									<div class="border p-3 total-cart ">
 										<h3 class="poppins p-1">Cart Totals</h3>
 										<p class="d-flex p-2">
 											<span>Subtotal</span>
@@ -85,7 +85,7 @@
 									</div>
 								</div>
 								<div class="col-md-6  pb-5">
-									<div class="payment p-3 bg-lightgrey h-100">
+									<div class="payment p-3  h-100">
 										<h3 class="poppins p-1">Payment Method</h3>
 										<div class="col-md-12 p-1">
 											<div class="custom-control custom-radio">

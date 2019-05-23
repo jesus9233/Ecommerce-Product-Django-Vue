@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" class="bg-lightgrey">
     <div class="loading" v-if="loading === true ">
       <div class="cssload-dots">
       	<div class="cssload-dot"></div>
@@ -79,6 +79,10 @@ body a:hover{text-decoration: none;}
 
 .bg-lightgrey{
   background-color: #f8f9fa;
+}
+
+.poppins{
+  font-family:"poppins";
 }
 
 /* v-vpshow classes */

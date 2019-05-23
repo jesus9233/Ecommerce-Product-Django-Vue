@@ -1,5 +1,5 @@
 <template>
-	<div class="container-fluid pt-5 bg-lightgrey">
+	<div class="container-fluid pt-5 ">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-4 d-flex flex-column social">
@@ -17,10 +17,9 @@
 				</div>
 				<div class="col-md-4 d-flex flex-column menu">
 					<p class="heading">Menu</p>
-					<a href="#"><p>Home</p></a>
-					<a href="#"><p>Shop</p></a>
-					<a href="#"><p>Contact</p></a>
-					<a href="#"><p>Favourites</p></a>
+					<router-link :to="{'name':Home}" exact><p>Home</p></router-link>
+					<router-link :to="{'name':Shop}" exact><p>Shop</p></router-link>
+					<router-link :to="{'name':Contact}" exact><p>Contact</p></router-link>
 				</div>
 				<div class="col-md-4 d-flex flex-column menu">
 					<p class="heading">Help</p>

@@ -5,8 +5,8 @@
     <div class="pt-5">
       <div class="container">
         <template v-if="product">
-          <div class="row pb-5 text-capitalize">
-            <div class="col-lg-4">
+          <div class="row pb-5 text-capitalize ">
+            <div class="col-lg-4 col-md-9 col-sm-8 col-7 mb-1">
               <div class="image">
                 <img :src="image ? image :  product.product.thumb" alt="product image">
               </div>
@@ -53,7 +53,7 @@
 
           <div>
             <b-tabs content-class="mt-3">
-              <b-tab title="Description" active><p>{{product.product.description}}</p></b-tab>
+              <b-tab title="Description" class="bg-lightgrey" active><p>{{product.product.description}}</p></b-tab>
             </b-tabs>
           </div>
         </template>
@@ -174,12 +174,13 @@
 <style scoped>
 
   .select-color {
-    height: 5rem;
-    width: 5rem;
+    height: 3rem;
+    width: 3rem;
     margin: 0rem 0.5rem;
     cursor: pointer;
     border: 1px solid;
     display: inline-block;
+    background-color:#fff;
   }
 
   .image img,
@@ -189,5 +190,7 @@
   .selectedColor {
     outline: 3px solid #00ff7f;
   }
-
+.bg-lightgrey{
+  background-color:#f8f9fa !important;
+}
 </style>

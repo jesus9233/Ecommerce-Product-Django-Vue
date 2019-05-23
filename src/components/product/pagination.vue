@@ -1,5 +1,5 @@
 <template>
-		<ul class="pagination justify-content-center">
+		<ul class="pagination justify-content-center  mb-0 pb-3">
 			<template v-if="obj.previous">
 				<li class="page-item"><a class="page-link" @click.prevent="fetchProducts(url+'?page=1')">First</a></li>
 				<li class="page-item"><a class="page-link" @click.prevent="fetchProducts(obj.previous)">Previous</a></li>

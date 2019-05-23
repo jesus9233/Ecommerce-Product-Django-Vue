@@ -5,15 +5,16 @@ from .models import Product
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    # image = SerializerMethodField()
-    # size = SerializerMethodField()
-    # brand = SerializerMethodField()
+    colors = SerializerMethodField()
+    sizes = SerializerMethodField()
+    brand = SerializerMethodField()
     # category = SerializerMethodField()
     # material_type = SerializerMethodField()
 
     class Meta:
         model = Product
-        fields = ['title','slug','price','thumb']
+        fields = ['id', 'title', 'slug', 'price', 'brand', 'thumb', 'colors',
+                  'sizes']
     #
     # def get_color(self, obj):
     #     try:
@@ -22,13 +23,27 @@ class ProductSerializer(serializers.ModelSerializer):
     #         color = None
     #     return color
     #
-    # def get_size(self, obj):
-    #     try:
-    #         size = [x.number for x in obj.size.all()]
-    #     except Exception as e:
-    #         size = None
-    #     return size
-    #
+
+    def get_colors(self, obj):
+        try:
+            colors = [x.color for x in obj.children.all()]
+        except Exception as e:
+            colors = None
+            print(e)
+        return colors
+
+    def get_sizes(self, obj):
+        try:
+            sizes = None
+            for x in obj.children.all():
+                for y in x.variants.all():
+                    print(y)
+            sizes = [variant.size for children in obj.children.all()
+                     for variant in children.variants.all()]
+        except Exception as e:
+            sizes = None
+            print(e)
+        return sizes
     # def get_category(self, obj):
     #     try:
     #         category = obj.category.name
@@ -43,18 +58,20 @@ class ProductSerializer(serializers.ModelSerializer):
     #         material_type = None
     #     return material_type
     #
-    # def get_brand(self, obj):
-    #     try:
-    #         brand = obj.brand.name
-    #     except Exception as e:
-    #         brand = None
-    #     return brand
+
+    def get_brand(self, obj):
+        try:
+            brand = obj.brand.name
+        except Exception as e:
+            brand = None
+            print(e)
+        return brand
+
 
 class ProductRetrieveSerializer(serializers.ModelSerializer):
     brand = SerializerMethodField()
     category = SerializerMethodField()
     material_type = SerializerMethodField()
-
 
     class Meta:
         model = Product

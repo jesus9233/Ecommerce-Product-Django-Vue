@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<app-header>Contact Us</app-header>
-		<div class="container-fluid bg-lightgrey">
+		<div class="container-fluid ">
 			<div class="container">
 				<div class="row py-5">
 					<div class="col-md-6 p-5">
