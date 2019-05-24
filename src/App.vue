@@ -21,7 +21,9 @@
     </div>
 
     <app-navbar></app-navbar>
-    <router-view></router-view>
+    <transition enter-active-class="animated fadeIn" leave-active-class="fadeOut">
+      <router-view></router-view>
+    </transition>
     <app-footer></app-footer>
     </div>
   </div>

@@ -66,6 +66,10 @@ export default new Router({
       meta:{
         requiresGuest : true,
       }
+    },
+    {
+      path:'*',
+      redirect:'/'
     }
   ],
   mode:'history'

@@ -52,10 +52,8 @@ class ProductManager(models.Manager):
         return super().get_queryset().exclude(Q(children=None)
                                               | Q(children__variants=None))
 
-    def staff_all(self, request):
-        if request.user.is_superuser:
-            return super().get_queryset().all()
-        return self.get_queryset()
+    # def staff_all(self, request):
+    #     return super().get_queryset().all()
 
     def limit(self, limit):
         count = limit
@@ -69,7 +67,6 @@ class ProductManager(models.Manager):
         lookups = (Q(title__icontains=query) | Q(description__icontains=query)
                    | Q(slug__icontains=query) | Q(tags__name__in=query_list))
         return self.get_queryset().filter(lookups).distinct()
-
 
 
 gender_choices = (
@@ -113,7 +110,8 @@ class Product(models.Model):
                               help_text='Derived from main child')
     timestamp = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    objects = ProductManager()
+    objects = models.Manager()
+    items = ProductManager()
 
     class Meta:
         verbose_name = "Product"

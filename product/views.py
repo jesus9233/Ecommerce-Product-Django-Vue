@@ -14,7 +14,7 @@ from .paginations import MyPagination
 
 
 class ProductListAPIView(ListAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.items.all()
     serializer_class = ProductSerializer
     pagination_class = MyPagination
     permission_classes = [AllowAny]
@@ -22,12 +22,12 @@ class ProductListAPIView(ListAPIView):
     def get_queryset(self, *args, **kwargs):
         query = self.request.GET.get('search')
         if query:
-            return Product.objects.search(query)
-        return Product.objects.all()
+            return Product.items.search(query)
+        return Product.items.all()
 
 
 class ProductByCategoryAPIView(ListAPIView):
-    queryset = Product.objects.all()
+    queryset = Product.items.all()
     serializer_class = ProductSerializer
     pagination_class = MyPagination
     permission_classes = [AllowAny]
@@ -35,14 +35,14 @@ class ProductByCategoryAPIView(ListAPIView):
     def get_queryset(self, *args, **kwargs):
         category = self.kwargs.get('category')
         if category:
-            return Product.objects.filter(category__name__iexact=category)
+            return Product.items.filter(category__name__iexact=category)
         return Response(status=status.status.HTTP_404_NOT_FOUND)
 
 
 @api_view()
 @permission_classes([AllowAny])
 def latest_products(request, limit):
-    products_data = Product.objects.limit(limit)
+    products_data = Product.items.limit(limit)
     serializer = ProductSerializer(products_data, many=True)
     return Response(serializer.data)
 
