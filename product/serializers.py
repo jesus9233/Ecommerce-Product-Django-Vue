@@ -37,6 +37,9 @@ class ProductSerializer(serializers.ModelSerializer):
             sizes = None
             sizes = [variant.size for children in obj.children.all()
                      for variant in children.variants.all()]
+            sizes = list(set(sizes))
+            # print(sizes)
+            sizes.sort(reverse=True)
         except Exception as e:
             sizes = None
             print(e)

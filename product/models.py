@@ -52,6 +52,11 @@ class ProductManager(models.Manager):
         return super().get_queryset().exclude(Q(children=None)
                                               | Q(children__variants=None))
 
+    def staff_all(self, request):
+        if request.user.is_superuser:
+            return super().get_queryset().all()
+        return self.get_queryset()
+
     def limit(self, limit):
         count = limit
         if count > 0:
@@ -64,6 +69,7 @@ class ProductManager(models.Manager):
         lookups = (Q(title__icontains=query) | Q(description__icontains=query)
                    | Q(slug__icontains=query) | Q(tags__name__in=query_list))
         return self.get_queryset().filter(lookups).distinct()
+
 
 
 gender_choices = (

@@ -185,7 +185,7 @@
 
   .image img,
   .select-color img {
-    max-width: 100%;
+    width: 100%;
   }
   .selectedColor {
     outline: 3px solid #00ff7f;
