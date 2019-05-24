@@ -1,33 +1,21 @@
 <template>
-	<!-- <router-link :to="'/product/'+product.slug" active-class="active"
-							 class="trend d-block h-100" >
-		<div class="h-100">
-			<div class="o-h">
-				<img :src="product.thumb" class="product-image" alt="product image">
-			</div>
-			<div class="ml-1 p-2  d-flex align-self-end">
-				<p class="mt-2 mb-0 text-capitalize">{{product.title}}</p>
-				<p class="mb-0 p-1 text-success">Rs. {{product.price}}</p>
-			</div>
-		</div>
-	</router-link> -->
-    <div class="product-card o-h" :id="'product-card'+product.id"
-         @mouseover="showDetails('product-card'+product.id)"
-         @mouseout="hideDetails('product-card'+product.id)"
-         @focus="showDetails('product-card'+product.id)"
-         @blur="hideDetails('product-card'+product.id)"
-         tabindex="0" ref="ok">
-       <div class="overlay">
+  <div class="product-card o-h" :id="'product-card'+product.id"
+     @mouseover="showDetails('product-card'+product.id)"
+     @mouseout="hideDetails('product-card'+product.id)"
+     @focus="showDetails('product-card'+product.id)"
+     @blur="hideDetails('product-card'+product.id)"
+     tabindex="0" ref="card">
+     <div class="overlay">
 
-       </div>
-       <router-link class="view-details text-uppercase font-weight-bold poppins"
-       :to="'/product/'+product.slug" tag="button">VIEW DETAILS</router-link>
-      <div class="product-img">
-        <img :src="product.thumb" alt="Product Thumbnail" class="w-100 h-100 product-thumb">
-      </div>
-      <div class="" style="height:90px;">
+     </div>
+     <router-link class="view-details text-uppercase font-weight-bold poppins"
+     :to="'/product/'+product.slug" tag="button">VIEW DETAILS</router-link>
+    <div class="product-img">
+      <img :src="product.thumb" alt="Product Thumbnail" class="w-100 h-100 product-thumb">
+    </div>
+    <div class="" style="height:90px;">
       <div class="details p-3 bg-white o-h">
-        <h6 class="text-left text-capitalize">{{product.title}}</h6>
+        <h6 class="text-left text-capitalize title">{{product.title}}</h6>
         <div class="d-flex">
           <div class="d-inline-flex w-50 text-capitalize">
             <span class="text-secondary">{{product.brand}}</span>
@@ -49,43 +37,30 @@
           <h6 class="text-left">Colors</h6>
           <p class="text-secondary text-left poppins ml-2 mb-0">
             <template v-for="color in product.colors">
-                <div :style="'background-color:'+color" class="color" tabindex="0">
+                <div :style="'background-color:'+color" class="color">
                 </div>
             </template>
           </p>
         </div>
       </div>
-      </div>
-
-      </div>
+    </div>
+  </div>
 </template>
 <script>
 	export default{
 	props:['product'],
 	methods:{
 		showDetails(id){
-			// let el = document.getElementById(id)
-      let el = this.$refs["ok"];
-      console.log(el);
+      let el = this.$refs["card"];
 			   el.classList.add('animate');
 			},
       hideDetails(id){
-        // let el = document.getElementById(id)
-        let el = this.$refs["ok"];
+        let el = this.$refs["card"];
           el.classList.remove('animate');
       },
-      setThumbRatio(){
-        let els = document.getElementsByClassName('product-thumb');
-        for (var i = 0; i < els.length; i++) {
-          els[i].style.width = "100%";
-          els[i].style.height = els[i].style.width;
-        }
-      }
-	},
-  mounted(){
-    // this.setThumbRatio();
-  }
-}
+    }
+	}
+
 </script>
 <style scoped>
 .product-card{
@@ -94,6 +69,13 @@
   height:380px;
   transition:0.15s;
 }
+
+.title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .overlay{
   content:'';
   position:absolute;
@@ -125,8 +107,9 @@
   margin-right:5px;
   cursor:pointer;
   transition:0.15s;
+  display:inline-block;
 }
-.color:hover, .color:focus{
+.color:hover{
   transform:scale(1.2);
 }
 .view-details{

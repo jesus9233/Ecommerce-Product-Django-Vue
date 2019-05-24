@@ -11,27 +11,11 @@
 		<div class="section-heading " text="trending" id="trending" v-vpshow>
 			Trending
 		</div>
-			<div class="row justify-content-center ">
-				<div class="col-md-10 col-sm-12 col-8">
-					<div class="row">
-						<div class="col-lg-4 col-sm-6 col-12 mb-4" v-for="product in latest">
-							<app-product-thumb :product="product"></app-product-thumb>
-						</div>
-					</div>
-				</div>
-			</div>
-	  	<div class="section-heading" text="latest products" v-vpshow>
+		<app-list :productsValue="latest"></app-list>
+		<div class="section-heading" text="latest products" v-vpshow>
 		latest products
 		</div>
-		<div class="row justify-content-center ">
-			<div class="col-md-10 col-sm-12 col-8">
-				<div class="row">
-					<div class="col-lg-4 col-sm-6 col-12 mb-4" v-for="product in latest">
-						<app-product-thumb :product="product"></app-product-thumb>
-					</div>
-				</div>
-			</div>
-		</div>
+		<app-list :productsValue="latest"></app-list>
 	</div>
 	<div class="sale-image">
 		<div class="header-text">
@@ -63,16 +47,19 @@
 </template>
 
 <script>
-import ProductThumb from './product/productThumb';
 import axios from 'axios'
+
+import List from './product/list';
+import ProductThumb from './product/productThumb';
+
 export default{
 	data(){
 		return {
 			latest:'',
-			uniqueId:1
 		}
 	},
 	components:{
+		appList:List,
 		appProductThumb:ProductThumb,
 	},
 	methods:{

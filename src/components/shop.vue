@@ -1,7 +1,9 @@
 <template>
 	<div>
 		<app-header>collection</app-header>
-		<app-list :productsValue="productsValue"></app-list>
+		<div class="container-fluid py-5 ">
+			<app-list :productsValue="productsValue"></app-list>
+		</div>
 		<app-pagination :url="url"></app-pagination>
 	</div>
 </template>

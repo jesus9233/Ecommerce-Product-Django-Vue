@@ -35,9 +35,6 @@ class ProductSerializer(serializers.ModelSerializer):
     def get_sizes(self, obj):
         try:
             sizes = None
-            for x in obj.children.all():
-                for y in x.variants.all():
-                    print(y)
             sizes = [variant.size for children in obj.children.all()
                      for variant in children.variants.all()]
         except Exception as e:

@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models import Q
+from django.shortcuts import get_object_or_404
 
 
 class Brand(models.Model):
@@ -47,6 +48,9 @@ class Tag(models.Model):
 
 
 class ProductManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().exclude(Q(children=None)
+                                              | Q(children__variants=None))
 
     def limit(self, limit):
         count = limit
@@ -90,7 +94,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, related_name='products',
                                  on_delete=models.SET(
                                   get_unspecified_category)
-                                  )
+                                 )
     material_type = models.ForeignKey(Material,
                                       on_delete=models.SET(
                                        get_unspecified_material)

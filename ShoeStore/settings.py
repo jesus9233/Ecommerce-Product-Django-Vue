@@ -41,11 +41,11 @@ INSTALLED_APPS = [
 
     # our apps
     'user.apps.UserConfig',
-    'billing.apps.BillingConfig',
     'product.apps.ProductConfig',
     'childproduct.apps.ChildproductConfig',
     'variants.apps.VariantsConfig',
     'cart.apps.CartConfig',
+    'billing.apps.BillingConfig',
 
     # third party
     'rest_framework',

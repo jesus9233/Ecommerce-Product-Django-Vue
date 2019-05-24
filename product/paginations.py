@@ -7,6 +7,7 @@ from rest_framework.response import Response
 
 class MyPagination(PageNumberPagination):
     page_size = 4
+
     def get_paginated_response(self, data):
         return Response(OrderedDict([
              ('lastPage', ceil(self.page.paginator.count/self.page_size)),

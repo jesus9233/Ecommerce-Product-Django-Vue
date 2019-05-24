@@ -4,7 +4,7 @@ from ShoeStore.utils import unique_slug_generator
 from .models import Product
 
 
-@receiver(pre_save, sender = Product)
+@receiver(pre_save, sender=Product)
 def create_slug(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = unique_slug_generator(instance)

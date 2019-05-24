@@ -15,7 +15,9 @@
 			</form>
 			<h4>Search Results : {{$route.params.query}}</h4>
 		</div>
-		<app-list :productsValue="productsValue"></app-list>
+		<div class="container-fluid py-5 ">
+			<app-list :productsValue="productsValue"></app-list>
+		</div>
 		<app-pagination :url="'/api/product?search='+$route.params.query+'&'"></app-pagination>
 	</div>
 </template>
