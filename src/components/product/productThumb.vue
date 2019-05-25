@@ -55,8 +55,10 @@
 			   el.classList.add('animate');
 			},
       hideDetails(id){
-        let el = this.$refs["card"];
+        if(this.$refs["card"]){
+          let el = this.$refs["card"];
           el.classList.remove('animate');
+        }
       },
     }
 	}
