@@ -17,9 +17,9 @@
 				</div>
 				<div class="col-md-4 d-flex flex-column menu">
 					<p class="heading">Menu</p>
-					<router-link :to="{'name':Home}" exact><p>Home</p></router-link>
-					<router-link :to="{'name':Shop}" exact><p>Shop</p></router-link>
-					<router-link :to="{'name':Contact}" exact><p>Contact</p></router-link>
+					<router-link :to="{name:'Home'}" exact><p>Home</p></router-link>
+					<router-link :to="{name:'Shop'}" exact><p>Shop</p></router-link>
+					<router-link :to="{name:'Contact'}" exact><p>Contact</p></router-link>
 				</div>
 				<div class="col-md-4 d-flex flex-column menu">
 					<p class="heading">Help</p>

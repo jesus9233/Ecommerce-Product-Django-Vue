@@ -17,7 +17,7 @@
       <div class="details p-3 bg-white o-h">
         <h6 class="text-left text-capitalize title">{{product.title}}</h6>
         <div class="d-flex">
-          <div class="d-inline-flex w-50 text-capitalize">
+          <div class="d-inline-flex w-50 brand text-capitalize">
             <span class="text-secondary">{{product.brand}}</span>
           </div>
           <div class="d-inline-flex w-50 justify-content-end">
@@ -70,7 +70,7 @@
   transition:0.15s;
 }
 
-.title{
+.title,.brand{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -115,6 +115,7 @@
 .view-details{
   padding:0.5rem 1rem;
   color:#fff;
+  white-space:nowrap;
   border:2px solid #fff;
   opacity:0;
   background:transparent;

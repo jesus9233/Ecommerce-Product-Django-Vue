@@ -14,8 +14,7 @@
             <div class="col-lg-8">
               <h3 class="poppins">{{product.product.title}}</h3>
               <span>{{fetchMain}}</span><div>
-                <p class="font-weight-bold d-inline-block">{{price ? price : product.product.price}}</p>
-                <span class="text-monospace"></span>
+                <p class="font-weight-bold text-success">Rs {{price ? price : product.product.price}}</p>
               </div>
               <div class="my-3">
                   <label>Color</label>

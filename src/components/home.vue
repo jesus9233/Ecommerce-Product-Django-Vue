@@ -140,7 +140,7 @@ background-attachment: fixed;
 }
 .section-heading{
 	padding-top: 2rem;
-	font-size: 8vw;
+	font-size: 10vw;
 	text-align: center;
 	font-weight: 700;
 	color: rgba(0, 0, 0, 0.1);
@@ -155,7 +155,7 @@ background-attachment: fixed;
 	left: 50%;
 	transform: translate(-50%, -50%);
 	color: black;
-	font-size: 4vw;
+	font-size: 6vw;
 }
 
 .services .icon{

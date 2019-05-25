@@ -25,7 +25,7 @@
                       {{product.name}}
                     </router-link>
                   </h5>
-                  <span>Rs. {{product.price}}</span>
+                  <span class="text-success">Rs. {{product.price}}</span>
                   <p>Size {{product.size}}</p>
                   <div class="text-right">
                     <a class="btn btn-danger btn-sm text-white" @click.prevent="cartToggle(product.id)">
